@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use App\Models\OnboardingModule;
 
 class EmployeeController extends Controller {
     function profile_page() {
@@ -37,7 +38,11 @@ class EmployeeController extends Controller {
         return redirect()->route('login')->with('error', 'User does not have a company association.');
     }
 
-    
+    function onboarding_home_page()
+    {
+        $modules = OnboardingModule::all(); // Fetch modules 
+        return view('employee.onboarding-home-page', compact('modules'));
+    }
 
 }
 

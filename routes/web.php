@@ -54,3 +54,4 @@ Route::middleware(['web', 'auth'])->group(function () {
     });
 });
 
+Route::get('/employee/onboarding-home-page', [EmployeeController::class, 'onboarding_home_page'])->name('onboarding_home_page');;//display the homepage 
