@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-    <h1 class="fw-semibold mb-4">Manage Account</h1>
+    <h1 class="fw-semibold mb-4">Manage Company</h1>
     <div class="row">
         <div class="col-md-11">
             <div class="col-md-4">
@@ -11,28 +11,28 @@
                     <span class="input-group-text">
                         <i class="ti ti-search"></i>
                     </span>
-                    <input type="text" class="form-control" id="searchField" placeholder="Enter Admin ID or Name"
-                        aria-label="Enter Admin ID or Name" aria-describedby="searchButton">
+                    <input type="text" class="form-control" id="searchField" placeholder="Enter Company Name"
+                        aria-label="Enter Company Name" aria-describedby="searchButton">
                 </div>
             </div>
         </div>
         <div class="col-md-1">
             <button type="button" class="btn btn-primary m-1"
-                onclick="window.location.href='{{ route('superadmin.add_account') }}'">Add</button>
+                onclick="window.location.href='{{ route('superadmin.add_company') }}'">Add</button>
         </div>
     </div>
     <br>
-    @foreach($admins as $admin)
+    @foreach($companies as $company)
     <div class="col-md-12 profile-card">
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-10">
-                        <h5 class="card-title">{{ $admin->name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $admin->profile->employee_id }}</h6>
+                        <h5 class="card-title">{{ $company->Name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $company->Industry }}</h6>
                     </div>
                     <div class="col-md-2">
-                        <a href=""
+                        <a href="{{ route('superadmin.edit_company', ['id' => $company->CompanyID]) }}"
                             class="card-link">Edit</a>
                             <a href="#" class="card-link" onclick="confirmDelete('')">Delete</a>
                     </div>
