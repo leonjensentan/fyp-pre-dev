@@ -18,7 +18,7 @@
         </div>
         <div class="col-md-1">
             <button type="button" class="btn btn-primary m-1"
-                onclick="window.location.href=''">Add</button>
+                onclick="window.location.href='{{ route('superadmin.add_account') }}'">Add</button>
         </div>
     </div>
     <br>
