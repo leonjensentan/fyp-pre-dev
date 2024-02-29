@@ -34,6 +34,14 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('superadmin.manage_company') }}" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-building-community"></i>
+                        </span>
+                        <span class="hide-menu">Manage Companies</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('logout') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-logout"></i>

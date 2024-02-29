@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SuperAdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\PostController;
 
@@ -20,19 +23,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< Updated upstream
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-<<<<<<< Updated upstream
-=======
 Route::get('/discussion/homepage', [DiscussionController::class, 'homepage']) -> name('homepage');; //display discussion homepage
 Route::get('/discussion/searched', [DiscussionController::class, 'searched']) -> name('searched');; //display discussion searched question page
 Route::get('/discussion/typeown', [DiscussionController::class, 'typeown']) -> name('typeown');; //display discussion searched question page
 Route::get('/discussion/homepage', [PostController::class, 'homepageName']) -> name('randomPost');;
 
->>>>>>> Stashed changes
 Route::middleware(['web', 'auth'])->group(function () {
     // Common authenticated user routes (both admin and employee)
 
@@ -58,14 +57,14 @@ Route::middleware(['web', 'auth'])->group(function () {
         // Routes specific to superadmin
         Route::get('/superadmin/profile-page', [SuperAdminController::class, 'profile_page'])->name('superadmin.profile_page');
         Route::get('/superadmin/manage-account', [SuperAdminController::class,'manageAccount'])->name('superadmin.manage_account');
-
+        Route::get('/superadmin/add-account', [SuperAdminController::class, 'add_account'])->name('superadmin.add_account');
+        Route::post('/superadmin/add-account', [SuperAdminController::class, 'add_accountPost'])->name('superadmin.add_account.post');
+        Route::get('/superadmin/add-company', [SuperAdminController::class, 'add_company'])->name('superadmin.add_company');
+        Route::post('/superadmin/add-company', [SuperAdminController::class, 'add_companyPost'])->name('superadmin.add_company.post');
+        Route::get('/superadmin/manage-company', [SuperAdminController::class,'manageCompany'])->name('superadmin.manage_company');
+        Route::get('/superadmin/edit-company/{id}', [SuperAdminController::class, 'editCompany'])->name('superadmin.edit_company');
+        Route::post('/superadmin/edit-company', [SuperAdminController::class, 'editCompanyPost'])->name('superadmin.edit_company.post');
     });
 });
 
-=======
-Route::get('/employee/profile-page', [EmployeeController::class, 'profile_page']) -> name('profile_page');; //display the login form
-Route::get('/discussion/homepage', [DiscussionController::class, 'homepage']) -> name('homepage');; //display discussion homepage
-Route::get('/discussion/searched', [DiscussionController::class, 'searched']) -> name('searched');; //display discussion searched question page
-Route::get('/discussion/typeown', [DiscussionController::class, 'typeown']) -> name('typeown');; //display discussion searched question page
-Route::get('/', [PostController::class, 'homepageName']);
->>>>>>> Stashed changes
+Route::get('/employee/onboarding-home-page', [EmployeeController::class, 'onboarding_home_page'])->name('onboarding_home_page');;//display the homepage 
