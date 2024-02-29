@@ -2,12 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
-<<<<<<< Updated upstream
-=======
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\AuthController;
->>>>>>> Stashed changes
 use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\PostController;
 
@@ -26,7 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-<<<<<<< Updated upstream
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -71,10 +67,3 @@ Route::middleware(['web', 'auth'])->group(function () {
     });
 });
 
-=======
-Route::get('/employee/profile-page', [EmployeeController::class, 'profile_page']) -> name('profile_page');; //display the login form
-Route::get('/discussion/homepage', [DiscussionController::class, 'homepage']) -> name('homepage');; //display discussion homepage
-Route::get('/discussion/searched', [DiscussionController::class, 'searched']) -> name('searched');; //display discussion searched question page
-Route::get('/discussion/typeown', [DiscussionController::class, 'typeown']) -> name('typeown');; //display discussion searched question page
-Route::get('/', [PostController::class, 'homepageName']);
->>>>>>> Stashed changes
