@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 <?php
+=======
+<?php 
+>>>>>>> Stashed changes
 
 namespace App\Http\Controllers;
 

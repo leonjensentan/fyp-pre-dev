@@ -25,6 +25,14 @@ Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginPost'])->name('login.post');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+<<<<<<< Updated upstream
+=======
+Route::get('/discussion/homepage', [DiscussionController::class, 'homepage']) -> name('homepage');; //display discussion homepage
+Route::get('/discussion/searched', [DiscussionController::class, 'searched']) -> name('searched');; //display discussion searched question page
+Route::get('/discussion/typeown', [DiscussionController::class, 'typeown']) -> name('typeown');; //display discussion searched question page
+Route::get('/discussion/homepage', [PostController::class, 'homepageName']) -> name('randomPost');;
+
+>>>>>>> Stashed changes
 Route::middleware(['web', 'auth'])->group(function () {
     // Common authenticated user routes (both admin and employee)
 
