@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('employee-layout')
 
 @section('content')
 <div class="container-fluid">
@@ -50,14 +50,14 @@
             </div>
 
             <!-- Check if $randomPost exists and contains valid data -->
-            @if(isset($randomPost) && $randomPost)
+            @if($randomPost)
             <!-- 2x2 cards for answered questions -->
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <div class="card twoxtwo-gray-card">
                         <div class="card-body">
                             <!-- Card content goes here -->
-                            <h5 class="card-title">Asked by: {{ $randomPost->user->name }}</h5>
+                            <h5 class="card-title">Asked by: {{ $user -> name }}</h5>
 
                             <!-- Additional Card content goes here -->
                             <div class="card">
@@ -74,7 +74,7 @@
                     <div class="card twoxtwo-gray-card">
                         <div class="card-body">
                             <!-- Card content goes here -->
-                            <h5 class="card-title">Asked by: {{ $randomPost->user->name }}</h5>
+                            <h5 class="card-title">Asked by: {{ $user -> name }}</h5>
 
                             <!-- Additional Card content goes here -->
                             <div class="card">

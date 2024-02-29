@@ -15,7 +15,7 @@ class PostController extends Controller
         // If a post is found
         if ($randomPost) {
             // Retrieve the user ID associated with the fetched post
-            $userId = $randomPost->userid;
+            $userId = $randomPost->UserID;
 
             // Find the user from the users table using the retrieved user ID
             $user = User::find($userId);
@@ -27,7 +27,7 @@ class PostController extends Controller
             }
 
             // Pass the fetched post and user to the view
-            return view('discussion.homepage', ['post' => $randomPost, 'user' => $user]);
+            return view('discussion.homepage', ['randomPost' => $randomPost, 'user' => $user]);
         } else {
             // If no post is found, return a view with no data
             return view('discussion.homepage');

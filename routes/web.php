@@ -30,7 +30,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/discussion/homepage', [DiscussionController::class, 'homepage']) -> name('homepage');; //display discussion homepage
 Route::get('/discussion/searched', [DiscussionController::class, 'searched']) -> name('searched');; //display discussion searched question page
 Route::get('/discussion/typeown', [DiscussionController::class, 'typeown']) -> name('typeown');; //display discussion searched question page
-Route::get('/', [PostController::class, 'homepageName']);
+Route::get('/discussion/homepage', [PostController::class, 'homepageName']) -> name('randomPost');;
 
 Route::middleware(['web', 'auth'])->group(function () {
     // Common authenticated user routes (both admin and employee)

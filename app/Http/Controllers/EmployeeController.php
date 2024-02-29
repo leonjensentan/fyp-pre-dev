@@ -1,3 +1,5 @@
+<?php 
+
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
@@ -45,3 +47,5 @@ class EmployeeController extends Controller {
     }
 
 }
+
+?>
