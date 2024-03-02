@@ -4,35 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class PostController extends Controller
 {
     public function homepageName()
     {
-        // Fetch a single post from the database in random order
-        $randomPost = Post::inRandomOrder()->first();
+        // Fetch four random posts from the database
+        $randomPosts = Post::inRandomOrder()->limit(4)->get();
 
-        // If a post is found
-        if ($randomPost) {
-            // Retrieve the user ID associated with the fetched post
-            $userId = $randomPost->UserID;
+        // Retrieve the user IDs associated with the fetched posts
+        $userIds = $randomPosts->pluck('UserID')->toArray();
 
-            // Find the user from the users table using the retrieved user ID
-            $user = User::find($userId);
+        // Find the users from the users table using the retrieved user IDs
+        $users = User::whereIn('id', $userIds)->pluck('name', 'id');
 
-            // If user is not found
-            if (!$user) {
-                // Log an error or handle the case appropriately
-                \Log::error('User not found with ID: ' . $userId);
-            }
-
-            // Pass the fetched post and user to the view
-            return view('discussion.homepage', ['randomPost' => $randomPost, 'user' => $user]);
-        } else {
-            // If no post is found, return a view with no data
-            return view('discussion.homepage');
-        }
+        // Pass the fetched posts and users to the view
+        return view('discussion.homepage', ['randomPosts' => $randomPosts, 'users' => $users]);
     }
-
-    // Other controller methods...
 }
