@@ -9,6 +9,8 @@ use App\Http\Controllers\DiscussionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ForgetPassController;
 use App\Http\Controllers\GoogleAuthController;
+use App\Http\Controllers\ModuleController;
+use App\Http\Requests\StoreModuleRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +53,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('passw
 Route::get('/discussion/homepage', [DiscussionController::class, 'homepage']) -> name('homepage');; //display discussion homepage
 Route::get('/discussion/searched', [DiscussionController::class, 'searched']) -> name('searched');; //display discussion searched question page
 Route::get('/discussion/typeown', [DiscussionController::class, 'typeown']) -> name('typeown');; //display discussion searched question page
-Route::get('/', [PostController::class, 'homepageName']);
+Route::get('/discussion/homepage', [PostController::class, 'homepageName']) -> name('randomPost');;
 
 Route::middleware(['web', 'auth'])->group(function () {
     // Common authenticated user routes (both admin and employee)
@@ -88,4 +90,16 @@ Route::middleware(['web', 'auth'])->group(function () {
     });
 });
 
-Route::get('/employee/onboarding-home-page', [EmployeeController::class, 'onboarding_home_page'])->name('onboarding_home_page');;//display the homepage 
+//Route::get('/employee/onboarding-home-page', [EmployeeController::class, 'onboarding_home_page'])->name('onboarding_home_page');;//display the homepage 
+
+
+
+Route::post('/modules', ModuleController::class, 'store')->name('modules.store');
+Route::resource('modules', ModuleController::class);
+Route::get('/employee/onboarding-home-page', [ModuleController::class, 'index'])->name('employee.onboarding-home-page');
+
+Route::get('/modules/{module}/show', [ModuleController::class, 'show'])->name('modules.show');
+Route::get('/onboarding-modules/create', [ModuleController::class, 'create']);
+
+
+Route::post('/modules/{module}/submit-answers', [ModuleController::class, 'submitAnswers'])->name('modules.submit-answers');

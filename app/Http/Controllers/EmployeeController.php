@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
@@ -45,3 +46,4 @@ class EmployeeController extends Controller {
         return view('employee.login-page');
     }
 
+?>
