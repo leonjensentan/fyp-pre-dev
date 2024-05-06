@@ -13,9 +13,9 @@ class AddProfilePictureToProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::table('profiles', function (Blueprint $table) {
+/*         Schema::table('profiles', function (Blueprint $table) {
             $table->string('profile_picture')->nullable()->after('address');
-        });
+        }); */
     }
 
     /**

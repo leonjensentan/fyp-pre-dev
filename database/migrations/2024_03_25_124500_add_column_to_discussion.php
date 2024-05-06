@@ -8,9 +8,9 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::table('posts', function (Blueprint $table) {
+/*         Schema::table('posts', function (Blueprint $table) {
             $table->boolean('is_anonymous')->default(false)->nullable();
-        });
+        }); */
 
         
 
